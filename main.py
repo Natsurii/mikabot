@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import aiohttp
+import os
 from discord.ext.commands import Bot
 from discord import Game
 
@@ -66,4 +67,4 @@ async def repeat(ctx, times: int, content='repeating...'):
         await ctx.send(content)
 
 
-bot.run('TOKEN')
+bot.run(os.environ['TOKEN'])
