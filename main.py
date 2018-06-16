@@ -11,7 +11,7 @@ TOKEN = 'BOT_TOKEN'
 
 @bot.event
 async def on_ready():
-	game = discord.Game("with the API")
+	game = discord.Game("Serving High Rise")
 	await bot.change_presence(status=discord.Status.idle, activity=game)
 	print('Hi bwoss! We have already contacted Discord as {0.user}'.format(bot))
 
