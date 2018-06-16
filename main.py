@@ -7,7 +7,6 @@ from discord import Game
 #vars
 BOT_PREFIX = ('>>', '~~')
 bot = Bot(command_prefix=BOT_PREFIX)
-TOKEN = 'BOT_TOKEN'
 
 @bot.event
 async def on_ready():
@@ -67,4 +66,4 @@ async def repeat(ctx, times: int, content='repeating...'):
         await ctx.send(content)
 
 
-bot.run(TOKEN)
+bot.run('TOKEN')
