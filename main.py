@@ -1,11 +1,19 @@
 import discord
-from discord.ext import commands
+import asyncio
+import aiohttp
+from discord.ext.commands import Bot
+from discord import Game
 
-bot = commands.Bot(command_prefix=",")
+#vars
+BOT_PREFIX = ('>>', '~~')
+bot = Bot(command_prefix=BOT_PREFIX)
+TOKEN = 'BOT_TOKEN'
 
 @bot.event
 async def on_ready():
-	print(f'Hi bwoss! We have already contacted Discord as {bot}')
+	game = discord.Game("with the API")
+	await bot.change_presence(status=discord.Status.idle, activity=game)
+	print('Hi bwoss! We have already contacted Discord as {0.user}'.format(bot))
 
 @bot.event
 async def on_message(message):
@@ -16,6 +24,21 @@ async def on_message(message):
 		msg = 'Hello {0.author.mention}'.format(message)
 		await message.channel.send(msg)
 
+	if message.content.startswith('hi!'):
+		msg = 'Hi!'.format(message)
+		await message.channel.send(msg)
+
+	if message.content.startswith('owo'):
+		msg = '*notices* buldge'.format(message)
+		await message.channel.send(msg)
+
+	if message.content.startswith('uwu'):
+		msg = 'uwu'.format(message)
+		await message.channel.send(msg)
+		
+	if message.content.startswith(BOT_PREFIX):
+		await bot.process_commands(message)
+
 @bot.event
 async def on_guild_channel_create(channel):
 	await channel.send('First! Gotcha!')
@@ -24,9 +47,18 @@ async def on_guild_channel_create(channel):
 async def add(ctx, left: int, right: int):
     """Adds two numbers together."""
     output = left + right
-    embed = discord.Embed(title='Addition', color=0x65ea15)
+    embed = discord.Embed(title='Operation: Addition', color=0x65ea15)
     embed.add_field(name='Result', value=str(output), inline=False)
+
     await ctx.send(embed=embed)
+
+@bot.command()
+async def ping(ctx):
+	'''Check bots latency'''
+	embed = discord.Embed(color=0x7289DA)
+	latency= str(bot.latency)
+	embed.add_field(name='Latency', value=':ping_pong: Pong! ' + latency + ' second')
+	await ctx.send(embed=embed)
 
 @bot.command()
 async def repeat(ctx, times: int, content='repeating...'):
@@ -35,4 +67,4 @@ async def repeat(ctx, times: int, content='repeating...'):
         await ctx.send(content)
 
 
-bot.run('TOKEN')
+bot.run(TOKEN)
