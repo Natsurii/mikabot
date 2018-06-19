@@ -53,11 +53,11 @@ async def add(ctx, left: int, right: int):
     await ctx.send(embed=embed)
 
 
-@bot.command(pass_context=True)
-async def ping(ctx):
-    t = await bot.say('Pong!')
-    ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
-    await bot.edit_message(t, new_content='Pong! Took: {}ms'.format(int(ms)))
+#@bot.command(pass_context=True)
+#async def ping(ctx):
+#    t = await bot.say('Pong!')
+#    ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
+#    await bot.edit_message(t, new_content='Pong! Took: {}ms'.format(int(ms)))
 
 @bot.command()
 async def repeat(ctx, times: int, content='repeating...'):
