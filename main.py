@@ -52,13 +52,12 @@ async def add(ctx, left: int, right: int):
 
     await ctx.send(embed=embed)
 
-@bot.command()
+
+@bot.command(pass_context=True)
 async def ping(ctx):
-	'''Check bots latency'''
-	embed = discord.Embed(color=0x7289DA)
-	latency= str(bot.latency)
-	embed.add_field(name='Latency', value=':ping_pong: Pong! ' + latency + ' second')
-	await ctx.send(embed=embed)
+    t = await bot.say('Pong!')
+    ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
+    await bot.edit_message(t, new_content='Pong! Took: {}ms'.format(int(ms)))
 
 @bot.command()
 async def repeat(ctx, times: int, content='repeating...'):
