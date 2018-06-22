@@ -62,8 +62,7 @@ async def ping(ctx):
 	millis = (time.monotonic() - start) * 1000
 	# Since sharded bots will have more than one latency, this will average them if needed.
 	heartbeat = ctx.bot.latency * 1000
-
-    await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
+	await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
 
 @bot.command()
 async def copyme(ctx, *, content):
