@@ -30,7 +30,7 @@ async def on_message(message):
 		await message.channel.send(msg)
 
 	if message.content.startswith('owo'):
-		msg = '*notices* buldge'.format(message)
+		msg = '*notices* bulge'.format(message)
 		await message.channel.send(msg)
 
 	if message.content.startswith('uwu'):
