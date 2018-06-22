@@ -2,11 +2,12 @@ import discord
 import asyncio
 import aiohttp
 import os
+import time
 from discord.ext.commands import Bot
 from discord import Game
 
 #vars
-BOT_PREFIX = ('>>', '~~')
+BOT_PREFIX = ('>>', 'Nica')
 bot = Bot(command_prefix=BOT_PREFIX)
 
 @bot.event
@@ -53,17 +54,22 @@ async def add(ctx, left: int, right: int):
     await ctx.send(embed=embed)
 
 
-#@bot.command(pass_context=True)
-#async def ping(ctx):
-#    t = await bot.say('Pong!')
-#    ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
-#    await bot.edit_message(t, new_content='Pong! Took: {}ms'.format(int(ms)))
+@bot.command()
+async def ping(ctx):
+    start = time.monotonic()
+    msg = await ctx.send('Please wait a while...')
+    millis = (time.monotonic() - start) * 1000
+
+    # Since sharded bots will have more than one latency, this will average them if needed.
+    heartbeat = ctx.bot.latency * 1000
+
+    await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
 
 @bot.command()
-async def repeat(ctx, times: int, content='repeating...'):
+async def copyme(ctx, *, content):
     """Repeats a message multiple times."""
-    for i in range(times):
-        await ctx.send(content)
-
+    embed = discord.Embed(title='Ok, iw ill copy you.', color=0x65ea15)
+    embed.add_field(name='You said...', value=content, inline=False)
+    await ctx.send(embed=embed)
 
 bot.run(os.environ['TOKEN'])
