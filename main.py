@@ -56,13 +56,12 @@ async def calc(ctx, content):
 
 @bot.command()
 async def ping(ctx):
-	"""I am freaking copypasta bot"""
-    start = time.monotonic()
-    msg = await ctx.send('Please wait a while...')
-    millis = (time.monotonic() - start) * 1000
-
-    # Since sharded bots will have more than one latency, this will average them if needed.
-    heartbeat = ctx.bot.latency * 1000
+	"""Ping latency"""
+	start = time.monotonic()
+	msg = await ctx.send('Please wait a while...')
+	millis = (time.monotonic() - start) * 1000
+	# Since sharded bots will have more than one latency, this will average them if needed.
+	heartbeat = ctx.bot.latency * 1000
 
     await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
 
