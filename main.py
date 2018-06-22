@@ -12,7 +12,7 @@ bot = Bot(command_prefix=BOT_PREFIX)
 
 @bot.event
 async def on_ready():
-	game = discord.Game("Serving High Rise")
+	game = discord.Game("use >>help")
 	await bot.change_presence(status=discord.Status.idle, activity=game)
 	print('Hi bwoss! We have already contacted Discord as {0.user}'.format(bot))
 
