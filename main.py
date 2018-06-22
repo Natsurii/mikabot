@@ -12,7 +12,7 @@ bot = Bot(command_prefix=BOT_PREFIX)
 
 @bot.event
 async def on_ready():
-	game = discord.Game(">>help | send boods")
+	game = discord.Game("Serving High Rise")
 	await bot.change_presence(status=discord.Status.idle, activity=game)
 	print('Hi bwoss! We have already contacted Discord as {0.user}'.format(bot))
 
@@ -30,7 +30,7 @@ async def on_message(message):
 		await message.channel.send(msg)
 
 	if message.content.startswith('owo'):
-		msg = '*notices* bulge'.format(message)
+		msg = '*notices* buldge'.format(message)
 		await message.channel.send(msg)
 
 	if message.content.startswith('uwu'):
@@ -45,11 +45,11 @@ async def on_guild_channel_create(channel):
 	await channel.send('First! Gotcha!')
 
 @bot.command()
-async def add(ctx, left: int, right: int):
+async def calc(ctx, content):
     """Adds two numbers together."""
-    output = left + right
-    embed = discord.Embed(title='Operation: Addition', color=0x65ea15)
-    embed.add_field(name='Result', value=str(output), inline=False)
+    message = content
+    embed = discord.Embed(title='Calculate:'+ str(message), color=0x65ea15)
+    embed.add_field(name='Result', value=(message), inline=False)
 
     await ctx.send(embed=embed)
 
@@ -57,18 +57,21 @@ async def add(ctx, left: int, right: int):
 @bot.command()
 async def ping(ctx):
 	"""I am freaking copypasta bot"""
-	start = time.monotonic()
-	msg = await ctx.send('Please wait a while...')
-	millis = (time.monotonic() - start) * 1000
-	# Since sharded bots will have more than one latency, this will average them if needed
-	heartbeat = ctx.bot.latency * 1000
-	await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
+    start = time.monotonic()
+    msg = await ctx.send('Please wait a while...')
+    millis = (time.monotonic() - start) * 1000
+
+    # Since sharded bots will have more than one latency, this will average them if needed.
+    heartbeat = ctx.bot.latency * 1000
+
+    await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
 
 @bot.command()
-async def copyme(ctx, *, content)
-	"""I am freaking copypasta bot"""
-	embed = discord.Embed(title='You know u sux.', color=0x65ea15)
-	embed.add_field(name='You said...', value=content, inline=False)
-	await ctx.send(embed=embed)
+async def copyme(ctx, *, content):
+    """Repeats a message multiple times."""
+    embed = discord.Embed(title='Im a copy-cat bot!', color=0x65ea15)
+    embed.add_field(name='You said...', value=content, inline=False)
+    await ctx.send(embed=embed)
+    	
 
 bot.run(os.environ['TOKEN'])
