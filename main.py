@@ -46,11 +46,10 @@ async def on_guild_channel_create(channel):
 
 @bot.command()
 async def calc(ctx, *, argument):
-    """Adds two numbers together."""
-    message = argument
-    embed = discord.Embed(title='Calculate:'+ str(message), color=0x65ea15)
+    """Calculate Expressions"""
+    message = eval(argument)
+    embed = discord.Embed(title='Calculate:'+ str(argument), color=0x65ea15)
     embed.add_field(name='Result', value=(message), inline=False)
-
     await ctx.send(embed=embed)
 
 
