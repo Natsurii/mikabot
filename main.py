@@ -45,9 +45,9 @@ async def on_guild_channel_create(channel):
 	await channel.send('First! Gotcha!')
 
 @bot.command()
-async def calc(ctx, content:int):
+async def calc(ctx, *, argument):
     """Adds two numbers together."""
-    message = content
+    message = argument
     embed = discord.Embed(title='Calculate:'+ str(message), color=0x65ea15)
     embed.add_field(name='Result', value=(message), inline=False)
 
