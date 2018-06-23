@@ -7,7 +7,7 @@ from discord.ext.commands import Bot
 from discord import Game
 
 #vars
-BOT_PREFIX = ('>>', 'Nica')
+BOT_PREFIX = ('>>', 'Nica ','nica ')
 bot = Bot(command_prefix=BOT_PREFIX)
 
 @bot.event
