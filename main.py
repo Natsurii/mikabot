@@ -3,6 +3,7 @@ import asyncio
 import aiohttp
 import os
 import time
+import math
 from discord.ext.commands import Bot
 from discord import Game
 
@@ -46,7 +47,7 @@ async def on_guild_channel_create(channel):
 
 @bot.command()
 async def calc(ctx, *, argument):
-    """Calculate Expressions"""
+    """Evaluate Expressions, not Python codes."""
     message = eval(argument)
     embed = discord.Embed(title='Calculate:'+ str(argument), color=0x65ea15)
     embed.add_field(name='Result', value=(message), inline=False)
