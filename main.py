@@ -46,15 +46,6 @@ async def on_guild_channel_create(channel):
 	await channel.send('First! Gotcha!')
 
 @bot.command()
-async def calc(ctx, *, argument):
-    """Evaluate Expressions, not Python codes."""
-    message = eval(argument)
-    embed = discord.Embed(title='Calculate:'+ str(argument), color=0x65ea15)
-    embed.add_field(name='Result', value=(message), inline=False)
-    await ctx.send(embed=embed)
-
-
-@bot.command()
 async def ping(ctx):
 	"""Ping latency"""
 	start = time.monotonic()
