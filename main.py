@@ -3,7 +3,6 @@ import asyncio
 import aiohttp
 import os
 import time
-import math
 from discord.ext.commands import Bot
 from discord import Game
 
