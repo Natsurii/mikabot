@@ -39,21 +39,22 @@ async def on_message(message):
 		
 	if message.content.startswith(BOT_PREFIX):
 		await bot.process_commands(message)
-
-@bot.event
-async def on_guild_channel_create(channel):
-	await channel.send('First! Gotcha!')
-
+		
 @bot.command()
 async def ping(ctx):
 	"""Ping latency"""
 	start = time.monotonic()
-	msg = await ctx.send('Please wait a while...')
+	msg = await ctx.send(':ping_pong:Pong!')
 	millis = (time.monotonic() - start) * 1000
 	# Since sharded bots will have more than one latency, this will average them if needed.
 	heartbeat = ctx.bot.latency * 1000
-	await msg.edit(content=f':ping_pong: **Pong!** Heartbeat: {heartbeat:,.2f}ms\tACK: {millis:,.2f}ms.')
-
+	embed=discord.Embed(title="Bot Latency", description="The bot received your latency request.", color=0xe7aeff) 
+	embed.set_thumbnail(url="https://emojipedia-us.s3.amazonaws.com/thumbs/320/apple/129/table-tennis-paddle-and-ball_1f3d3.png")
+	embed.add_field(name='ACK', value=str("%.2f" %millis) + ' ms', inline=False) 
+	embed.add_field(name='Heartbeat', value=str("%.2f" %heartbeat) +'ms', inline=True) 
+	embed.set_footer(text="Note: Latency are different to other servers. ") 
+	await msg.edit(embed=embed)
+	
 @bot.command()
 async def copyme(ctx, *, content):
     """Repeats a message multiple times."""
