@@ -25,10 +25,6 @@ async def on_message(message):
 		msg = 'Hello {0.author.mention}'.format(message)
 		await message.channel.send(msg)
 
-	if message.content.startswith('hi'):
-		msg = 'Hi!'.format(message)
-		await message.channel.send(msg)
-
 	if message.content.startswith('owo'):
 		msg = '*notices* buldge'.format(message)
 		await message.channel.send(msg)
@@ -37,8 +33,7 @@ async def on_message(message):
 		msg = 'uwu'.format(message)
 		await message.channel.send(msg)
 		
-	if message.content.startswith(BOT_PREFIX):
-		await bot.process_commands(message)
+	await bot.process_commands(message)
 		
 @bot.command()
 async def ping(ctx):
