@@ -7,12 +7,12 @@ from discord.ext import commands
 from discord import Game
 
 #vars
-BOT_PREFIX = ('>>', 'Nica ','nica ')
+BOT_PREFIX = ['Nica ','nica ']
 bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 @bot.event
 async def on_ready():
-	game = discord.Game("use >>help|Im sux at this")
+	game = discord.Game("use Nica help | @vduterteee")
 	await bot.change_presence(status=discord.Status.idle, activity=game)
 	print('Hi bwoss! We have already contacted Discord as {0.user}'.format(bot))
 
@@ -26,7 +26,7 @@ async def on_message(message):
 		await message.channel.send(msg)
 
 	if message.content.startswith('owo'):
-		msg = '*notices* buldge'.format(message)
+		msg = '*notices* bulge'.format(message)
 		await message.channel.send(msg)
 
 	if message.content.startswith('uwu'):
