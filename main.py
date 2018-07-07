@@ -3,12 +3,12 @@ import asyncio
 import aiohttp
 import os
 import time
-from discord.ext.commands import Bot
+from discord.ext import commands
 from discord import Game
 
 #vars
 BOT_PREFIX = ('>>', 'Nica ','nica ')
-bot = Bot(command_prefix=BOT_PREFIX)
+bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 @bot.event
 async def on_ready():
@@ -56,6 +56,15 @@ async def copyme(ctx, *, content):
     embed = discord.Embed(title='Im a copy-cat bot!', color=0x65ea15)
     embed.add_field(name='You said...', value=content, inline=False)
     await ctx.send(embed=embed)
-    	
+	
+def owner(ctx):
+    return ctx.message.author.id == 305998511894167552
+    
+@bot.command()
+@commands.check(owner)
+async def b(ctx, member):
+    msg = await ctx.send('{} ***was banned***'.format(member))
+    F = '\N{REGIONAL INDICATOR SYMBOL LETTER F}'
+    await msg.add_reaction(F)
 
 bot.run(os.environ['TOKEN'])
