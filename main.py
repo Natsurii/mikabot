@@ -61,10 +61,16 @@ def owner(ctx):
     return ctx.message.author.id == 305998511894167552
     
 @bot.command()
-@commands.check(owner)
+@commands.owner()
 async def b(ctx, member):
     msg = await ctx.send('{} ***was banned***'.format(member))
     F = '\N{REGIONAL INDICATOR SYMBOL LETTER F}'
     await msg.add_reaction(F)
 
+@bot.command(name='eval')
+@commands.owner()
+async def _eval(ctx, *, code):
+    """A bad example of an eval command"""
+    await ctx.send(eval(code))
+	
 bot.run(os.environ['TOKEN'])
