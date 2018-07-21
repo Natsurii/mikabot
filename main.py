@@ -75,4 +75,9 @@ async def ping(ctx):
     embed.add_field(name='Websocket', value=str("%.2f" %heartbeat) +'ms', inline=True) 
     embed.set_footer(text="Note: Latencies are different to other servers. ") 
     await msg.edit(embed=embed)
+
+@bot.command(hidden=True)
+@commands.check(is_owner)
+async def echo(chid: int, message: str):
+  await chid.send(message)
 bot.run(token, bot=True, reconnect=True)
