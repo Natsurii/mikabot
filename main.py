@@ -79,5 +79,5 @@ async def ping(ctx):
 @bot.command(hidden=True)
 @commands.check(is_owner)
 async def echo(ctx, channel: discord.TextChannel, *, msg):
-    await channel.send(msg)
+    await ctx.send(channel, msg)
 bot.run(token, bot=True, reconnect=True)
