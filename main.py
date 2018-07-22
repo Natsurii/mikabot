@@ -19,7 +19,8 @@ Desc = 'Cool bot uh.'
 bot = commands.Bot(command_prefix=prefixes, description=Desc)
 initial_extensions = ['cogs.simple',
                       'cogs.members',
-                      'cogs.owner']
+                      'cogs.owner',
+                      'cogs.eval']
 
 
 # Here we load our extensions(cogs) listed above in [initial_extensions].
