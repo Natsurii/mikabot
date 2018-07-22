@@ -14,8 +14,12 @@ class Eval():
         'Automatically removes code blocks from the code.'
         if content.startswith('```') and content.endswith('```'):
             return '\n'.join(content.split('\n')[1:(-1)])  # Remove ```py\n```
+        
+        def is_owner(ctx):
+            return ctx.message.author.id == 305998511894167552
 
     @commands.command(hidden=True, name='eval')
+    @commands.check(is_owner)
     async def _eval(self, ctx, *, body: str):
         env = {
             'bot': self.bot,
