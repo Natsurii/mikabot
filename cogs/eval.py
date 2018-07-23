@@ -18,7 +18,7 @@ class Eval():
             return '\n'.join(content.split('\n')[1:(-1)])  # Remove ```py\n```
 
     @commands.command(hidden=True, name='eval')
-    @commands.check (owner)
+    @commands.check(owner)
     async def _eval(self, ctx, *, body: str):
         env = {
             'bot': self.bot,
