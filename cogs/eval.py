@@ -15,8 +15,8 @@ class Eval():
         if content.startswith('```') and content.endswith('```'):
             return '\n'.join(content.split('\n')[1:(-1)])  # Remove ```py\n```
         
-        def is_owner(ctx):
-            return ctx.message.author.id == 305998511894167552
+    def is_owner(ctx):
+        return ctx.message.author.id == 305998511894167552
 
     @commands.command(hidden=True, name='eval')
     @commands.check(is_owner)
