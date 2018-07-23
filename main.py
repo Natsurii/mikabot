@@ -46,7 +46,7 @@ async def b(ctx, member):
 
 @bot.event
 async def on_ready():
-    game = discord.Game("the n^help command!")
+    game = discord.Game("your Heart | Nica help") 
     await bot.change_presence(status=discord.Status.idle, activity=game)    
 
     print('==========================================================')
