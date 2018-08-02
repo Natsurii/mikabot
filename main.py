@@ -46,7 +46,9 @@ async def b(ctx, member):
 
 @bot.event
 async def on_ready():
-    game = discord.Game("your Heart | Nica help") 
+    lenguild = len(bot.guilds)
+    game = discord.Game(f"my Heart | Nica help | Serving {lenguild} servers.")
+    
     await bot.change_presence(status=discord.Status.idle, activity=game)    
 
     print('==========================================================')
