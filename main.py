@@ -74,8 +74,8 @@ async def ping(ctx):
     heartbeat = ctx.bot.latency * 1000
     embed=discord.Embed(title="Bot Latency", description="The bot received your latency request.", color=0xe7aeff) 
     embed.set_thumbnail(url="https://emojipedia-us.s3.amazonaws.com/thumbs/320/apple/129/table-tennis-paddle-and-ball_1f3d3.png")
-    embed.add_field(name='ACK', value=str("%.2f" %millis) + ' ms', inline=False) 
-    embed.add_field(name='Websocket', value=str("%.2f" %heartbeat) +'ms', inline=True) 
+    embed.add_field(name='Heres the Ball!', value=str("%.2f" %millis) + ' ms', inline=False) 
+    embed.add_field(name='Average Ping to all servers.', value=str("%.2f" %heartbeat) +'ms', inline=True) 
     embed.set_footer(text="Note: Latencies are different to other servers. ") 
     await msg.edit(embed=embed)
 
