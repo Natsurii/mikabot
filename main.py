@@ -6,7 +6,7 @@ import os
 import aiohttp
 import asyncio
 import time
-import requests
+import request
 import json
 import sys, traceback
 from discord.ext import commands
