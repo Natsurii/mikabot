@@ -87,7 +87,7 @@ async def echo(ctx, channel: discord.TextChannel, *, msg):
     ch = client.get_channel(channel)
     await ch.send(msg)
 
-    
+'''
 user = 'ZXZlFsuTtWp2gFIF'
 key = '9a5A7KVT0o3UKyYwm9RRJhHFTOYngObY' 
 
@@ -106,5 +106,5 @@ async def on_message(message):
             await message.channel.send(r['response'] )
 
 print('Starting...')
-requests.post('https://cleverbot.io/1.0/create', json={'user':user, 'key':key, 'nick':'nica'})
+requests.post('https://cleverbot.io/1.0/create', json={'user':user, 'key':key, 'nick':'nica'})'''
 bot.run(token, bot=True, reconnect=True)
