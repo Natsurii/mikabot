@@ -81,30 +81,5 @@ async def ping(ctx):
     embed.set_footer(text="Note: Latencies are different to other servers. ") 
     await msg.edit(embed=embed)
 
-@bot.command(hidden=True)
-@commands.check(is_owner)
-async def echo(ctx, channel: discord.TextChannel, *, msg):
-    ch = client.get_channel(channel)
-    await ch.send(msg)
 
-'''
-user = 'ZXZlFsuTtWp2gFIF'
-key = '9a5A7KVT0o3UKyYwm9RRJhHFTOYngObY' 
-
-@bot.event
-async def on_ready():
-    print('Logged in as '+client.user.name+' (ID:'+str(client.user.id)+') | '+str(len(client.guilds))+' servers')
-    await client.change_presence(game=discord.Game(name='chat with me!'))
-
-@bot.event
-async def on_message(message):
-    if not message.author.bot and (message.guild == None or client.user in message.mentions):
-        await message.channel.trigger_typing()
-        txt = message.content.replace(message.guild.me.mention,'') if message.guild else message.content
-        r = json.loads(requests.post('https://cleverbot.io/1.0/ask', json={'user':user, 'key':key, 'nick':'frost', 'text':txt}).text)
-        if r['status'] == 'success':
-            await message.channel.send(r['response'] )
-
-print('Starting...')
-requests.post('https://cleverbot.io/1.0/create', json={'user':user, 'key':key, 'nick':'nica'})'''
 bot.run(token, bot=True, reconnect=True)
