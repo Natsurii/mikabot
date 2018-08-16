@@ -16,7 +16,7 @@ from discord import Game
 version = '3.0 ExpNature'
 token = os.environ['TOKEN']
 
-prefixes = ['!mk', 'Mika ','<@456783402469949451> ', 'mika' , 'mik']
+prefixes = ['Mika', 'Mika ', 'mika' , 'mika ','m++']
 Desc = 'Cool bot uh.'
 bot = commands.Bot(command_prefix=prefixes, description=Desc)
 initial_extensions = ['cogs.simple',
